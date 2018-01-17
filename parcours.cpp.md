@@ -19,6 +19,9 @@ limitations under the License.
 
 ```
 # Parcours de graphe, algorithme générique
+
+Répertoire GitHub correspondant à cet article : https://github.com/peportier/ia-parcours
+
 ## Dérivation du programme à partir de sa spécification
 ### Première esquisse
 Étant donné un graphe orienté $G$ et un nœud $v$ de ce graphe, nous cherchons à calculer l'ensemble des nœuds atteignables à partir de $v$.
