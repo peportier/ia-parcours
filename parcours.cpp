@@ -50,7 +50,7 @@ a( node* src )
       }
     }
 
-    x.insert(*u);                     // the node u of y is now white
+    x.insert(*u);                     // the node u of y is now black
     y.erase(u);
   }
 

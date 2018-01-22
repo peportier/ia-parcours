@@ -1,4 +1,4 @@
-```
+```c++
 /*
 Copyright 2018 Pierre-Edouard Portier
 peportier.me
