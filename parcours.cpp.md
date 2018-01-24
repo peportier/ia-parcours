@@ -126,7 +126,9 @@ struct
 node
 {
   int val;
-  vector<node*> nei;
+  vector< node* > nei;
+  node() {};
+  node(int i) : val(i) {}
 };
 
 ```
@@ -172,19 +174,15 @@ int
 main()
 {
   // example of a graph
-  struct node n1; n1.val = 1;
-  struct node n2; n2.val = 2;
-  struct node n3; n3.val = 3;
-  struct node n4; n4.val = 4;
-  struct node n5; n5.val = 5;
-  struct node n6; n6.val = 6;
-  n1.nei.insert(n1.nei.begin(), &n2);
-  n1.nei.insert(n1.nei.begin(), &n3);
-  n2.nei.insert(n2.nei.begin(), &n4);
-  n4.nei.insert(n4.nei.begin(), &n3);
-  n4.nei.insert(n4.nei.begin(), &n5);
-  n5.nei.insert(n5.nei.begin(), &n2);
-  n5.nei.insert(n5.nei.begin(), &n6);
+  node n1(1); node n2(2); node n3(3);
+  node n4(4); node n5(5); node n6(6);
+  n1.nei.push_back( &n2 );
+  n1.nei.push_back( &n3 );
+  n2.nei.push_back( &n4 );
+  n4.nei.push_back( &n3 );
+  n4.nei.push_back( &n5 );
+  n5.nei.push_back( &n2 );
+  n5.nei.push_back( &n6 );
 
   for( node* n : a(&n4) )
   {
