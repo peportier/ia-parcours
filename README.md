@@ -1,6 +1,6 @@
 # Dérivation d'un algorithme de parcours de graphe
 
-Corresponding webpage: http://peportier.me/teaching_2017_2018/ia/parcours/
+Corresponding webpage: http://peportier.me/teaching_2018_2019/ia/parcours/
 
 The source is in a literate programming format. To extract the source from the markdown file `parcours.cpp.md` do `./mdlp parcours.cpp.md` and it will generate the source file `parcours.cpp`.
 
