@@ -29,20 +29,20 @@ Répertoire GitHub correspondant à cet article : https://github.com/peportier/i
 Nous notons $s$ la fonction "successeur" qui retourne les voisins directs d'un
 ensemble de nœuds.
 
-Nous définissons la fonction $a$ ("atteignable") :
+Nous définissons la fonction $a​$ ("atteignable") :
 
-$$a(x) = x \cup a(s(x))$$
+$$a(x) = x \cup a(s(x))​$$
 
-L'ensemble $u$ des nœuds atteignables à partir de $x$ possède la propriété :
-$$a(u) = u$$
-En particulier, $s(u) \subseteq u  \quad \Rightarrow \quad a(u) = u$.
+L'ensemble $u​$ des nœuds atteignables à partir de $x​$ possède la propriété :
+$$a(u) = u​$$
+En particulier, $s(u) \subseteq u  \quad \Rightarrow \quad a(u) = u​$.
 
-L'ensemble des nœuds atteignables à partir de l'ensemble de nœuds $x$ est le plus petit ensemble qui inclut $x$ et qui possède la propriété ci-dessus. Sans cette précision, cette propriété ne permettrait pas de définir $a$. Par exemple, quelque soit $x$, l'ensemble de tous les nœuds du graphe satisferait cette égalité.
+L'ensemble des nœuds atteignables à partir de l'ensemble de nœuds $x$ est le plus petit ensemble qui inclut $x$ et qui possède la propriété ci-dessus. Sans cette précision, cette propriété ne permet pas de définir $a$. Par exemple, quelque soit $x$, l'ensemble de tous les nœuds du graphe satisfait l'égalité $a(u) = u$.
 
-Il faudrait également montrer qu'un plus petit ensemble solution existe. C'est-à-dire, montrer qu'étant données $u$ et $v$ deux solutions (i.e., $a(u)=u$ et $a(v)=v$ ),$a(u) \cap a(v)$ est également solution. Il s'en suit qu'étant donné $x$, il existe un plus petit ensemble solution incluant $x$ (viz. l'intersection de tous les ensembles qui sont solution et qui incluent $x$ ).
+Il faut également montrer qu'un plus petit ensemble solution existe. C'est-à-dire, montrer qu'étant données $u$ et $v$ deux solutions (i.e., $a(u)=u$ et $a(v)=v$ ),$a(u) \cap a(v)$ est également solution. Il s'en suit qu'étant donné $x$, il existe un plus petit ensemble solution incluant $x$ (viz. l'intersection de tous les ensembles qui sont solution et qui incluent $x$ ).
 
-Il s'agit de calculer un programme dont la post-condition est l'équation
-d'inconnue $x$ suivante :
+Il s'agit de calculer un programme dont la post-condition est l'équation suivante
+d'inconnue $x$ :
 $$R: \;\; a(\{v\}) = x$$
 
 Pour fixer les idées, nous pouvons avoir à l'esprit un exemple de graphe orienté (mais attention à ne pas être trop influencé par une configuration particulière...).
@@ -87,7 +87,7 @@ $$
 
 ### Optimisation
 
-Le programme que nous avons dérivé peut calculer plusieurs fois les successeurs d'un même nœud. Nous modifions l'invariant pour distinguer les nœuds dont les successeurs nous sont déjà connus (notés $x$ et que nous appellerons aussi les *nœuds noirs*) de ceux déjà rencontrés mais dont les successeurs nous sont encore inconnus (notés $y$ et que nous appellerons aussi les *nœuds gris*). Nous appellerons les nœuds encore non considérés : les *nœuds blancs*.
+Le programme que nous avons dérivé peut calculer plusieurs fois les successeurs d'un même nœud. Nous modifions l'invariant pour distinguer les nœuds dont les successeurs nous sont déjà connus (notés $x$ et que nous appellerons aussi les *nœuds noirs*) de ceux déjà rencontrés mais dont les successeurs nous sont encore inconnus (notés $y​$ et que nous appellerons aussi les *nœuds gris*). Nous appellerons les nœuds non encore considérés : les *nœuds blancs*.
 
 $$P1 : \quad a(\{v\}) = a(x \cup y) \;\; \wedge \;\; x \cap y = \emptyset \;\; \wedge \;\; s(x) \subseteq (x \cup y)$$
 
@@ -102,7 +102,7 @@ $$
 &end while \;\text{⍝ $R$}
 \end{aligned}
 $$
-Le programme termine-t-il ? Le nombre de nœuds qui ne sont pas dans $x$ est au moins égal à $0$. A chaque itération, ce nombre décroît du nombre de nœuds de $y$ ( car $x \cap y = \emptyset$ ). Or le nombre de nœuds de $y$ est strictement positif à cause de la clause garde de la boucle ( $y \neq \emptyset$ ). Ainsi, nous avons isolé une fonction monotone stricte et bornée ("bound function") qui prouve la terminaison du programme.
+Le programme termine-t-il ? Le nombre de nœuds qui ne sont pas dans $x$ est au moins égal à $0$. A chaque itération, ce nombre décroît du nombre de nœuds de $y$ ( car $x \cap y = \emptyset$ ). Or le nombre de nœuds de $y$ est strictement positif à cause de la clause garde de la boucle ( $y \neq \emptyset​$ ). Ainsi, nous avons isolé une fonction monotone stricte et bornée ("bound function") dont l'existence prouve la terminaison du programme.
 
 ## Implémentation
 
